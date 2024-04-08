@@ -1,15 +1,16 @@
 import React from "react";
-import { ContainerTitle, TitleColorPrimary, TitleColorSecundary } from "./styles";
+import { ContainerTitle, TitleStyled } from "./styles";
+import { colors } from "../../utils/colors";
 
-export default function Title() {
+export default function Title({size}) {
     return (
         <ContainerTitle>
-            <TitleColorPrimary>
+            <TitleStyled  size={size}>
                 IZI
-            </TitleColorPrimary>
-            <TitleColorSecundary>
+            </TitleStyled>
+            <TitleStyled color={colors.text_primary} size={size}>
                 LIST
-            </TitleColorSecundary>
+            </TitleStyled>
         </ContainerTitle>
     );
 

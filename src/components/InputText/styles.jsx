@@ -5,7 +5,7 @@ export const InputContainer = styled.div`
 `;
 
 export const InputField = styled.input`
-    width: 100%;
+    width:  ${props => props.size || "100%"};
     height: 2.5rem;
     padding: 0.75rem;
     border: 1px solid #ccc;
