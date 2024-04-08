@@ -14,11 +14,11 @@ export const Item = styled.div`
     display: flex;
     align-items: center;
     margin-bottom: 0.5rem;
-    cursor: pointer;
 `;
 
 export const Checkbox = styled.div`
     margin-right: 0.5rem;
+    cursor: pointer;
 `;
 
 export const ContainerIcons = styled.div`

@@ -1,25 +1,31 @@
 import { useState } from "react";
-import TextPrimary from "../TextPrimary";
 import { AddButton, Checkbox, ContainerIcons, ContainerItem, IconCheck, IconDelete, IconEdit, IconSquare, Item } from "./styles";
 import { colors } from "../../utils/colors";
-export default function ItemTask({onClickEdit, onClickDelete, text}) {
+import InputTask from "../InputTask";
+
+export default function ItemTask({ onClickEdit, onClickDelete, text }) {
     const [checked, setChecked] = useState(false);
+    const [editable, setEditable] = useState(false);
     
     const toggleChecked = () => {
         setChecked(!checked);
     };
-
+    const toggleEditable = () => {
+        setEditable(!editable);
+    };
     return (
         <ContainerItem>
-            <Item onClick={toggleChecked}>
-                <Checkbox>{checked ? <IconCheck /> : <IconSquare />}</Checkbox>
-                <TextPrimary text={text} size="14" color={checked ? colors.primary : colors.text_primary} decoration={checked ? "line-through" : "none"}/>
+            <Item>
+                <Checkbox onClick={toggleChecked}>{checked ? <IconCheck /> : <IconSquare />}</Checkbox>
+                <InputTask
+                    placeholder={text}
+                />
             </Item>
             <ContainerIcons>
-                <AddButton  onClick={onClickEdit}>
+                <AddButton onClick={toggleEditable}>
                     <IconEdit />
                 </AddButton>
-                <AddButton  onClick={onClickDelete}>
+                <AddButton onClick={onClickDelete}>
                     <IconDelete />
                 </AddButton>
             </ContainerIcons>

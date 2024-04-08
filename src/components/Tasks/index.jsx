@@ -9,6 +9,8 @@ import ItemTask from "../ItemTask";
 export default function Tasks() {
     const [tasks, setTasks] = useState([]);
     const [error, setError] = useState("");
+    const [newDescription, setNewDescription] = useState("");
+
     const idLogged = 5;
     const getTasks = async () => {
         // const token = localStorage.getItem('token');
@@ -28,7 +30,21 @@ export default function Tasks() {
     useEffect(() => {
         getTasks();
     }, []);
+   
 
+    // const editTask = async (e) => {
+    //     e.preventDefault();
+    //     const newDescription 
+    //     try {
+    //         console.log('error');
+    //     } catch (error) {
+    //         setError(error);
+    //         console.log(error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     getEdit();
+    // }, []);
     return (
         <><Header />
             <ContainerPage>
