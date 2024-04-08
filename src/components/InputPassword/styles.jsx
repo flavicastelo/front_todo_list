@@ -14,7 +14,7 @@ export const InputField = styled.input`
     outline: none;
     @media screen and (max-width: 768px) {
         font-size: 4vw;
-        height: 4rem;
+        height: 3rem;
     }
 `;
 
@@ -25,8 +25,5 @@ export const ToggleButton = styled.button`
     background: none;
     border: none;
     cursor: pointer;
-    @media screen and (max-width: 768px) {
-        top: 1rem;
-        right: 1rem;
-    }
+   
 `;

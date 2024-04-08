@@ -9,8 +9,10 @@ import Button from "../Button";
 import image from "../../assets/img-todolist.png";
 import Links from "../Links";
 import TitleSecundary from "../TitleSecundary";
+import  { useNavigate } from "react-router-dom";
 
 export default function Home() {
+    const navigate = useNavigate();
     return (
         <ContainerPage>
             <SectionLeft>
@@ -25,7 +27,7 @@ export default function Home() {
                 <Button text="ENTRAR" textColor="#FFF" bgColor={colors.primary} />
                 <ContainerText>
                     <TextPrimary text="Ainda não possui uma conta? " color={colors.text_primary} size="18px"/>
-                    <Links text="Cadastre-se " color={colors.primary} size="18px" onClick={()=>{}}/>
+                    <Links text="Cadastre-se " color={colors.primary} size="18px" onClick={() => navigate("/register")}/>
                 </ContainerText>
             </SectionRight>
         </ContainerPage>

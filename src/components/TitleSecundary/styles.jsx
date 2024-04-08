@@ -7,6 +7,6 @@ export const TitleSecundaryStyled = styled.h2`
     font-size: ${props => props.size || '24px'};
     text-align: center;
     @media screen and (max-width: 768px) {
-        font-size: 7vw;
+        font-size: 6vw;
     }
 `;

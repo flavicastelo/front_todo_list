@@ -12,6 +12,6 @@ export const ButtonStyled = styled.button`
     font-size: 18px;
     @media screen and (max-width: 768px) {
         font-size: 4vw;
-        height: 4rem;
+        height: 3rem;
     }
 `;
