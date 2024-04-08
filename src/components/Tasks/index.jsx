@@ -11,7 +11,7 @@ export default function Tasks() {
     const [error, setError] = useState('');
     const [newDescription, setNewDescription] = useState('');
     const [description, setDescription] = useState('');
-    const idStorage = localStorage.getItem('user_id'); 
+    const idStorage = localStorage.getItem('user_id');
     const userId = parseInt(idStorage);
     const token = localStorage.getItem('token');
 
@@ -22,7 +22,7 @@ export default function Tasks() {
             const data = response.data;
             const filteredTasks = data.filter(task => task.user_id === userId);
             setTasks(filteredTasks);
-
+            console.log('listando com sucesso');
         } catch (error) {
             setError(error);
             console.log(error);
@@ -30,9 +30,9 @@ export default function Tasks() {
     }
     useEffect(() => {
         getTasks();
-        addTask();
+
     }, []);
-   
+
     const addTask = async (e) => {
         const data = {
             userId: userId,
@@ -42,37 +42,50 @@ export default function Tasks() {
             const response = await api.post("/task/createtasks", data, `Bearer ${token}`);
             setDescription('');
             getTasks();
+
         } catch (error) {
             setError(error);
             console.log(error);
         }
     }
+
     // const editTask = async (e) => {
-    //     e.preventDefault();
-    //     const newDescription 
+    //     const data = {
+    //         newDescription: newDescription
+    //     }
     //     try {
-    //         console.log('error');
+    //         const response = await api.put(`/task/edittask/${userId}/${taskId}}`, data, `Bearer ${token}`);
+    //         setNewDescription('');
+    //         getTasks();
     //     } catch (error) {
     //         setError(error);
     //         console.log(error);
     //     }
     // }
-    // useEffect(() => {
-    //     getEdit();
-    // }, []);
+
+    const deleteTask = async (userId, taskId) => {
+        try {
+            const response = await api.delete(`/task/deletetask/${userId}/${taskId}`, `Bearer ${token}`);
+            getTasks();
+            console.log("excluído com sucesso");
+        } catch (error) {
+            setError(error);
+            console.log(taskId);
+        }
+    }
     return (
         <><Header />
             <ContainerPage>
                 <ContainerForm onSubmit={addTask}>
-                    <InputText placeholder="Adicionar tarefa" size="57vw" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <InputText placeholder="Adicionar tarefa" size="57vw" value={description} onChange={(e) => setDescription(e.target.value)} />
                     <AddButton onClick={() => { }} >
                         <Icon />
                     </AddButton>
                 </ContainerForm>
                 <ContainerTasks>
-                    {tasks.length === 0 ? (<ItemTask onClickEdit={() => { }} onClickDelete={() => { }} text={error} />) : (
+                    {tasks.length === 0 ? (<ItemTask onClickEdit={() => { }} onClickDelete={()=>{}} text={error} />) : (
                         tasks.map((task) => {
-                            return <ItemTask key={task.task_id} onClickEdit={() => { }} onClickDelete={() => { }} text={task.description} />
+                            return <ItemTask key={task.task_id} onClickEdit={() => { }} onClickDelete={() => deleteTask(userId, parseInt(task.task_id))} text={task.description} />
                         })
                     )}
                 </ContainerTasks>
