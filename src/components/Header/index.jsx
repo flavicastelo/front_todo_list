@@ -13,11 +13,12 @@ export default function Header() {
         logout();
         navigate("/");
     }
+    const userName = localStorage.getItem('user_name');
     return (
         <ContainerPage>
             <Title size="48px" />
             <ContainerRight>
-                <TextPrimary text="Olá, Usuário" />
+                <TextPrimary text={`Olá, ${userName}`} />
                <ButtonIcon text="Sair" color={colors.primary} onClick={onClickLogout}/>
             </ContainerRight>
 

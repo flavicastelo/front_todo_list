@@ -8,18 +8,19 @@ import ItemTask from "../ItemTask";
 
 export default function Tasks() {
     const [tasks, setTasks] = useState([]);
-    const [error, setError] = useState("");
-    const [newDescription, setNewDescription] = useState("");
+    const [error, setError] = useState('');
+    const [newDescription, setNewDescription] = useState('');
+    const [description, setDescription] = useState('');
+    const idStorage = localStorage.getItem('user_id'); 
+    const userId = parseInt(idStorage);
+    const token = localStorage.getItem('token');
 
-    const idLogged = 5;
     const getTasks = async () => {
-        // const token = localStorage.getItem('token');
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjUiLCJpYXQiOjE3MTI1ODE4MDcsImV4cCI6MTcxMjU4MjcwN30.9FG5g_qfCa63uIqY0-0Wq3B-GDKfz1lWY_DDpP61Jv4";
 
         try {
             const response = await api.get("/task/listtasks", `Bearer ${token}`);
             const data = response.data;
-            const filteredTasks = data.filter(task => task.user_id === idLogged);
+            const filteredTasks = data.filter(task => task.user_id === userId);
             setTasks(filteredTasks);
 
         } catch (error) {
@@ -29,9 +30,23 @@ export default function Tasks() {
     }
     useEffect(() => {
         getTasks();
+        addTask();
     }, []);
    
-
+    const addTask = async (e) => {
+        const data = {
+            userId: userId,
+            description: description
+        }
+        try {
+            const response = await api.post("/task/createtasks", data, `Bearer ${token}`);
+            setDescription('');
+            getTasks();
+        } catch (error) {
+            setError(error);
+            console.log(error);
+        }
+    }
     // const editTask = async (e) => {
     //     e.preventDefault();
     //     const newDescription 
@@ -48,8 +63,8 @@ export default function Tasks() {
     return (
         <><Header />
             <ContainerPage>
-                <ContainerForm>
-                    <InputText placeholder="Adicionar tarefa" size="57vw" />
+                <ContainerForm onSubmit={addTask}>
+                    <InputText placeholder="Adicionar tarefa" size="57vw" value={description} onChange={(e) => setDescription(e.target.value)}/>
                     <AddButton onClick={() => { }} >
                         <Icon />
                     </AddButton>

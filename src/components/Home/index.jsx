@@ -11,7 +11,7 @@ import Links from "../Links";
 import TitleSecundary from "../TitleSecundary";
 import { useNavigate } from "react-router-dom";
 import api from "../../utils/api";
-import { login, setIdUser } from "../../utils/auth";
+import { login, setIdUser, setUserName } from "../../utils/auth";
 import AuthContext from "../../context/authProvider";
 
 export default function Home() {
@@ -54,6 +54,7 @@ export default function Home() {
             setPassword('');
             login(response.data.token);
             setIdUser(response.data.user.user_id);
+            setUserName(response.data.user.name);
             navigate("/tasks");
         }).catch(function (error) {
             console.log(error);

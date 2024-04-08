@@ -12,7 +12,7 @@ export const ContainerPage = styled.main`
     gap: 1rem;
 `;
 
-export const ContainerForm = styled.section`
+export const ContainerForm = styled.form`
     display: flex;
     align-items: center;
     justify-content: space-between;
