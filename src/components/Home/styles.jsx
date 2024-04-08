@@ -54,3 +54,9 @@ export const Image = styled.img`
         width: 50%;
     }
 `;
+
+export const FormLogin = styled.form`
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+`;
