@@ -8,9 +8,15 @@ export const ContainerTitle= styled.section`
 export const TitleColorPrimary = styled.h1`
     color: ${colors.primary};
     font-size: 96px;
+    @media screen and (max-width: 768px) {
+        font-size: 12vw;
+    }
 `;
 export const TitleColorSecundary = styled.h1`
     color: ${colors.text_primary};
     font-size: 96px;
+    @media screen and (max-width: 768px) {
+        font-size: 12vw;
+    }
 `;
 

@@ -6,4 +6,7 @@ export const TextPrimaryStyled = styled.p`
     color: ${props => props.color || colors.text_primary};
     font-size: ${props => props.size || '24px'};
     text-align: center;
+    @media screen and (max-width: 768px) {
+        font-size: 4vw;
+    }
 `;

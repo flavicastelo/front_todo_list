@@ -8,6 +8,7 @@ import InputPassword from "../InputPassword";
 import Button from "../Button";
 import image from "../../assets/img-todolist.png";
 import Links from "../Links";
+import TitleSecundary from "../TitleSecundary";
 
 export default function Home() {
     return (
@@ -18,7 +19,7 @@ export default function Home() {
             <SectionRight>
                 <Title />
                 <TextPrimary text="Organize sua vida com a ajuda de um to-do list simples e eficiente" />
-                <TextPrimary text="LOGIN" color={colors.primary} size="48px" />
+                <TitleSecundary text="LOGIN" color={colors.primary} size="48px" />
                 <InputText placeholder="E-mail" />
                 <InputPassword placeholder="Senha" />
                 <Button text="ENTRAR" textColor="#FFF" bgColor={colors.primary} />

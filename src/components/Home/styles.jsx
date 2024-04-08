@@ -34,6 +34,7 @@ export const SectionRight = styled.section`
     @media screen and (max-width: 768px) {
         height: 75vh;
         width: 100vw;
+        justify-content: space-between;
     }
 `;
 
@@ -42,8 +43,14 @@ export const ContainerText = styled.div`
     gap: 0.5rem;
     width: auto;
     justify-content: end;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 `;
 
 export const Image = styled.img`
     width: 80%;
+    @media screen and (max-width: 768px) {
+        width: 50%;
+    }
 `;

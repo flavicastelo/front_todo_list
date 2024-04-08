@@ -8,17 +8,25 @@ export const InputContainer = styled.div`
 
 export const InputField = styled.input`
     width: 100%;
-    height: 2rem;
-    padding: 0.5rem;
+    height: 2.5rem;
+    padding: 0.75rem;
     border: 1px solid #ccc;
     outline: none;
+    @media screen and (max-width: 768px) {
+        font-size: 4vw;
+        height: 4rem;
+    }
 `;
 
 export const ToggleButton = styled.button`
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
     background: none;
     border: none;
     cursor: pointer;
+    @media screen and (max-width: 768px) {
+        top: 1rem;
+        right: 1rem;
+    }
 `;
