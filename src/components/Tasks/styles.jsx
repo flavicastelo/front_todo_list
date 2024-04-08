@@ -37,3 +37,9 @@ export const AddButton = styled.button`
 export const Icon = styled(FiPlus)`
     font-size: ${props => props.size || '24px'};
 `;
+export const ContainerTasks = styled.section`
+    background-color: ${colors.color_transparent};
+    width: 60vw;
+    min-height: 40vh;
+    padding: 2rem;
+`;
