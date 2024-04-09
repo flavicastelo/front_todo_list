@@ -3,11 +3,11 @@ import { ButtonIconStyled, ContainerButton, Icon } from "./styles";
 
 export default function ButtonIcon({ text, color, size, onClick }) {
     return (
-        <ContainerButton>
-            <ButtonIconStyled color={color} size={size} onClick={onClick}>
+        <ContainerButton color={color}>
+            <ButtonIconStyled  size={size} onClick={onClick}>
                 {text}
             </ButtonIconStyled>
-            <Icon color={color} size={size}/>
+            <Icon size={size}/>
         </ContainerButton>
 
     );

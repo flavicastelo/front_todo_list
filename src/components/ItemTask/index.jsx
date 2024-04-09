@@ -1,35 +1,48 @@
 import { useState } from "react";
-import { AddButton, Checkbox, ContainerIcons, ContainerItem, IconCheck, IconDelete, IconEdit, IconSquare, Item } from "./styles";
+import { AddButton, Checkbox, ContainerIcons, ContainerItem, IconCancel, IconCheck, IconDelete, IconEdit, IconSave, IconSquare, Item, Line } from "./styles";
 import { colors } from "../../utils/colors";
 import InputTask from "../InputTask";
 
-export default function ItemTask({ onClickEdit, onClickDelete, text }) {
+export default function     ItemTask({ onClickEdit, editable, onClickDelete, text, value, onClickSubmit, onClickCancel, inputValue, onChange }) {
     const [checked, setChecked] = useState(false);
-    const [editable, setEditable] = useState(false);
-    
+
     const toggleChecked = () => {
         setChecked(!checked);
     };
-    const toggleEditable = () => {
-        setEditable(!editable);
-    };
+
     return (
-        <ContainerItem>
+        <><ContainerItem>
             <Item>
                 <Checkbox onClick={toggleChecked}>{checked ? <IconCheck /> : <IconSquare />}</Checkbox>
                 <InputTask
                     placeholder={text}
-                />
+                    checked={checked}
+                    editable={editable}
+                    value={editable ? inputValue : value}
+                    onChange={onChange} />
             </Item>
-            <ContainerIcons>
-                <AddButton onClick={toggleEditable}>
-                    <IconEdit />
-                </AddButton>
-                <AddButton onClick={onClickDelete}>
-                    <IconDelete />
-                </AddButton>
-            </ContainerIcons>
+            {editable ? (
+                <ContainerIcons>
+                    <AddButton onClick={onClickSubmit}>
+                        <IconSave />
+                    </AddButton>
+                    <AddButton onClick={onClickCancel}>
+                        <IconCancel />
+                    </AddButton>
+                </ContainerIcons>
+            ) : (
+                <ContainerIcons>
+                    <AddButton onClick={onClickEdit}>
+                        <IconEdit />
+                    </AddButton>
+                    <AddButton onClick={onClickDelete}>
+                        <IconDelete />
+                    </AddButton>
+                </ContainerIcons>
+            )}
+
         </ContainerItem>
+        <Line /></>
 
     );
 }

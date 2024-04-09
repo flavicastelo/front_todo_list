@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../../utils/api";
 import { login, setIdUser, setUserName } from "../../utils/auth";
 import AuthContext from "../../context/authProvider";
+import Loading from "../Loading";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function Home() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [erroMsg, setErroMsg] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         if (emailRef.current) {
@@ -43,6 +45,7 @@ export default function Home() {
     }
 
     const handleSubmit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
         const data = {
             email: email,
@@ -91,7 +94,8 @@ export default function Home() {
                         value={password}
                         onChange={handleChangePass}
                     />
-                    <Button type="submit" text="ENTRAR" textColor="#FFF" bgColor={colors.primary} onClick={handleSubmit} />
+                    {isLoading ? <Loading /> : <Button type="submit" text="ENTRAR" textColor="#FFF" bgColor={colors.primary} onClick={handleSubmit} />}
+                    
                 </FormLogin>
 
                 <ContainerText>

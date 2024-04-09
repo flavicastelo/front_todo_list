@@ -19,6 +19,14 @@ export const ContainerForm = styled.form`
     width: 60vw;
 `;
 
+export const ContainerFormTask = styled.form`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+   
+`;
+
 export const AddButton = styled.button`
   display: flex;
   align-items: center;

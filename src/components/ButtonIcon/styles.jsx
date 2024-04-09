@@ -11,16 +11,20 @@ export const ContainerButton = styled.button`
     cursor: pointer;
     border: none;
     background-color: transparent;
+        color: ${props => props.color || colors.text_primary};
+    &:hover {
+        color: ${props => props.hoverColor || colors.text_primary};
+    }
     @media screen and (max-width: 768px) {
         font-size: 4vw;
     }
 `;
 export const ButtonIconStyled = styled.p`
-    color: ${props => props.color || colors.text_primary};
+    /* color: ${props => props.color || colors.text_primary}; */
     font-size: ${props => props.size || '24px'};
 `;
 export const Icon = styled(FaSignOutAlt)`
     margin-right: 4px; 
-    color: ${props => props.color || colors.text_primary};
+    /* color: ${props => props.color || colors.text_primary}; */
     font-size: ${props => props.size || '24px'};
 `;

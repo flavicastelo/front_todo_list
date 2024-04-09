@@ -18,8 +18,8 @@ export default function Header() {
         <ContainerPage>
             <Title size="48px" />
             <ContainerRight>
-                <TextPrimary text={`Olá, ${userName}`} />
-               <ButtonIcon text="Sair" color={colors.primary} onClick={onClickLogout}/>
+                <TextPrimary text={`Olá, ${userName}`} size='3vh'/>
+               <ButtonIcon size='3vh' text="Sair" color={colors.primary} onClick={onClickLogout}/>
             </ContainerRight>
 
         </ContainerPage>

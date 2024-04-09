@@ -6,4 +6,5 @@ export const ContainerTasksStyled = styled.section`
     width: 60vw;
     min-height: 40vh;
     padding: 2rem;
+    box-shadow: 2px 2px 5px 0px ${colors.transparent_dark};
 `;
