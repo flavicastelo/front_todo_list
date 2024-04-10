@@ -3,7 +3,7 @@ import { colors } from "../../utils/colors";
 
 export const ContainerHeader = styled.header`
     display: flex;
-    background-color: ${colors.secondary};
+    background-color: ${colors.secundary};
     height: 4rem;
     width: 100vw;
     padding: 1.5rem;

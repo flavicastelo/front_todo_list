@@ -8,7 +8,7 @@ export const ContainerPage = styled.main`
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background-color: ${colors.secondary};
+    background-color: ${colors.secundary};
 `;
 
 export const ContainerForm = styled.section`
@@ -18,13 +18,14 @@ export const ContainerForm = styled.section`
     gap: 1rem;
     background-color: #FFF;
     width: 50vw;
-    min-height: 80vh;
+    min-height: 90vh;
     box-shadow: 2px 2px 5px 0px #0000004c;
     padding: 2rem;
     @media screen and (max-width: 768px) {
         height: 75vh;
         width: 80vw;
         align-items: center;
+        padding: 1rem;
     }
 `;
 
@@ -46,4 +47,8 @@ export const FormRegister = styled.form`
         width: 80vw;
         align-items: center;
     }
+`;
+
+export const PassRegex = styled.span`
+    align-self: flex-start;
 `;

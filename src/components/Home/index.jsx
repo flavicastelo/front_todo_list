@@ -45,32 +45,40 @@ export default function Home() {
     }
 
     const handleSubmit = async (e) => {
-        setIsLoading(true);
         e.preventDefault();
         const data = {
             email: email,
             password: password,
         }
-        await api.post("/auth/login", data).then(function (response) {
-            setAuth({ email, password, token });
-            setEmail('');
-            setPassword('');
-            login(response.data.token);
-            setIdUser(response.data.user.user_id);
-            setUserName(response.data.user.name);
-            navigate("/tasks");
-        }).catch(function (error) {
+        try {
+            setIsLoading(true);
+            const response = await api.post("/auth/login", data);
+            if (response.status === 200) {
+                setAuth({ email, password, token });
+                setEmail('');
+                setPassword('');
+                setErroMsg('');
+                login(response.data.token);
+                setIdUser(response.data.user.user_id);
+                setUserName(response.data.user.name);
+                setIsLoading(false);
+                navigate("/tasks");
+            }
+
+        } catch (error) {
             console.log(error);
+            setIsLoading(false);
             if (!error?.response) {
                 setErroMsg('No Server Response');
-            } else if (error.response?.status === 400) {
-                setErroMsg('Missing Email or Password!');
+            } else if (error.response.data.error === 'missing_fields') {
+                setErroMsg('Preencha todos os campos!');
             } else if (error.response?.status === 401) {
-                setErroMsg('Unauthorized');
+                setErroMsg('Usuário ou senha inválido!');
             } else {
-                setErroMsg('Login Failed!');
+                setErroMsg('Login Falhou!');
             }
-        });
+        }
+
 
     };
     return (
@@ -80,8 +88,8 @@ export default function Home() {
             </SectionLeft>
             <SectionRight>
                 <SubHeader />
-                <TitleSecundary text="LOGIN" color={colors.primary}  size='2rem'/>
-                <FormLogin >
+                <TitleSecundary text="LOGIN" color={colors.primary} size='2rem' />
+                <FormLogin onSubmit={handleSubmit} >
                     <InputText
                         placeholder="E-mail"
                         value={email}
@@ -93,14 +101,15 @@ export default function Home() {
                         value={password}
                         onChange={handleChangePass}
                     />
-                    {isLoading ? <Loading /> : <Button type="submit" text="ENTRAR" textColor="#FFF" bgColor={colors.primary} onClick={handleSubmit} />}
+                    {erroMsg && <TextPrimary size='0.6rem' text={erroMsg} align='left' color='red' />}
+                    {isLoading ? <Loading /> : <Button type="submit" text="ENTRAR" textColor="#FFF" bgColor={colors.primary} disabled={!email || !password} onClick={handleSubmit} />}
                     <ContainerText>
-                    <TextPrimary text="Ainda não possui uma conta? " color={colors.text_primary}  />
-                    <Links text="Cadastre-se " color={colors.primary} onClick={() => navigate("/register")} />
-                </ContainerText>
+                        <TextPrimary text="Ainda não possui uma conta? " color={colors.text_primary} />
+                        <Links text="Cadastre-se " color={colors.primary} onClick={() => navigate("/register")} />
+                    </ContainerText>
                 </FormLogin>
 
-                
+
             </SectionRight>
         </ContainerPage>
     );

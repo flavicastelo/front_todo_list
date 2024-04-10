@@ -13,7 +13,7 @@ export const ContainerPage = styled.main`
 `;
 
 export const SectionLeft = styled.section`
-    background-color: ${colors.secondary};
+    background-color: ${colors.secundary};
     width: 50%;
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ export const SectionRight = styled.section`
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    background-color: #FFF;
+    background-color: ${colors.light_mode};
     width: 50%;
     padding: 4rem 4rem;
     @media screen and (max-width: 768px) {
@@ -47,6 +47,7 @@ export const ContainerText = styled.div`
     justify-content: end;
     @media screen and (max-width: 768px) {
         flex-direction: column;
+        gap: 0;
     }
 `;
 
