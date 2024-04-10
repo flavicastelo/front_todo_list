@@ -15,16 +15,12 @@ export const ContainerButton = styled.button`
     &:hover {
         color: ${props => props.hoverColor || colors.text_primary};
     }
-    @media screen and (max-width: 768px) {
-        font-size: 4vw;
-    }
+   
 `;
 export const ButtonIconStyled = styled.p`
-    /* color: ${props => props.color || colors.text_primary}; */
-    font-size: ${props => props.size || '24px'};
+    font-size: ${props => props.size || '1rem'};
 `;
 export const Icon = styled(FaSignOutAlt)`
     margin-right: 4px; 
-    /* color: ${props => props.color || colors.text_primary}; */
-    font-size: ${props => props.size || '24px'};
+    font-size: ${props => props.size || '1rem'};
 `;

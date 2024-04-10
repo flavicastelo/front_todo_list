@@ -3,22 +3,28 @@ import { FiCheckSquare, FiSquare, FiEdit, FiTrash2 } from "react-icons/fi";
 import { FaSave, FaTimes } from 'react-icons/fa';
 import { colors } from "../../utils/colors";
 
+export const ContainerPrincipal = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`;
 export const ContainerItem = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 55vw;
+    width: 100%;
     align-items: center;
-   margin-bottom: 0.2rem;
+    margin-bottom: 0.2rem;
 `;
 
 export const Item = styled.div`
     display: flex;
     align-items: center;
+    width: calc(80vw - 1rem);
 `;
 
 export const Checkbox = styled.div`
-    margin-right: 0.5rem;
     cursor: pointer;
     display: flex;
 `;
@@ -27,6 +33,9 @@ export const ContainerIcons = styled.div`
     display: flex;
     gap: 1rem;
     align-items: center;
+    @media screen and (max-width: 768px) {
+        gap: 0;
+    }
 `;
 export const AddButton = styled.button`
   display: flex;
@@ -65,7 +74,6 @@ export const IconEdit = styled(FiEdit)`
 `;
 
 export const IconDelete = styled(FiTrash2)`
-    margin-right: 4px; 
     color: ${props => props.color || colors.text_primary};
     font-size: ${props => props.size || '18px'};
     transition: color 0.3s ease;
@@ -75,7 +83,7 @@ export const IconDelete = styled(FiTrash2)`
 `;
 
 export const IconSave = styled(FaSave)`
-     margin-right: 4px; 
+    margin-right: 4px; 
     color: ${props => props.color || colors.text_primary};
     font-size: ${props => props.size || '18px'};
     transition: color 0.3s ease;
@@ -85,7 +93,6 @@ export const IconSave = styled(FaSave)`
 `;
 
 export const IconCancel = styled(FaTimes)`
-     margin-right: 4px; 
     color: ${props => props.color || colors.text_primary};
     font-size: ${props => props.size || '18px'};
     transition: color 0.3s ease;

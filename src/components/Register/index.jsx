@@ -9,6 +9,7 @@ import Links from "../Links";
 import { colors } from "../../utils/colors";
 import { useNavigate } from "react-router-dom";
 import api from "../../utils/api";
+import SubHeader from "../SubHeader";
 
 export default function Register() {
     const navigate = useNavigate();
@@ -56,9 +57,8 @@ export default function Register() {
     return (
         <ContainerPage>
             <ContainerForm>
-                <Title />
-                <TextPrimary text="Organize sua vida com a ajuda de um to-do list simples e eficiente" size={18} />
-                <TitleSecundary text="CADASTRE-SE" color={colors.primary} size="32px" />
+               <SubHeader />
+                <TitleSecundary text="CADASTRE-SE" color={colors.primary} size='1.5rem' />
                 <FormRegister onSubmit={handleSubmit}>
                     <InputText
                         placeholder="Nome"
@@ -83,8 +83,8 @@ export default function Register() {
                     <Button text="ENVIAR" textColor="#FFF" bgColor={colors.primary} />
                 </FormRegister>
                 <ContainerText>
-                    <TextPrimary text="Possui uma conta? " color={colors.text_primary} size="14px" />
-                    <Links text="Entre aqui " color={colors.primary} size="14px" onClick={() => navigate("/")} />
+                    <TextPrimary text="Possui uma conta? " color={colors.text_primary} />
+                    <Links text="Entre aqui " color={colors.primary} onClick={() => navigate("/")} />
                 </ContainerText>
             </ContainerForm>
         </ContainerPage>

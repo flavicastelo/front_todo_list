@@ -8,7 +8,6 @@ export const ContainerPage = styled.main`
     justify-content: center;
     align-items: center;
     padding-top: 4rem;
-    width: 100vw;
     gap: 1rem;
 `;
 
@@ -17,6 +16,10 @@ export const ContainerForm = styled.form`
     align-items: center;
     justify-content: space-between;
     width: 60vw;
+    @media screen and (max-width: 768px) {
+        width: 80vw;
+    }
+   
 `;
 
 export const ContainerFormTask = styled.form`
@@ -50,4 +53,9 @@ export const ContainerTasks = styled.section`
     width: 60vw;
     min-height: 40vh;
     padding: 2rem;
+    @media screen and (max-width: 768px) {
+        width: 80vw;
+        padding: 0.8rem;
+    }
+   
 `;

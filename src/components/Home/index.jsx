@@ -14,6 +14,7 @@ import api from "../../utils/api";
 import { login, setIdUser, setUserName } from "../../utils/auth";
 import AuthContext from "../../context/authProvider";
 import Loading from "../Loading";
+import SubHeader from "../SubHeader";
 
 export default function Home() {
     const navigate = useNavigate();
@@ -36,7 +37,6 @@ export default function Home() {
     }, [email, password]);
 
     const handleChangeEmail = (event) => {
-        console.log(event.target.value);
         setEmail(event.target.value);
     }
 
@@ -79,10 +79,9 @@ export default function Home() {
                 <Image src={image} />
             </SectionLeft>
             <SectionRight>
-                <Title />
-                <TextPrimary text="Organize sua vida com a ajuda de um to-do list simples e eficiente" />
-                <TitleSecundary text="LOGIN" color={colors.primary} size="48px" />
-                <FormLogin onSubmit={handleSubmit}>
+                <SubHeader />
+                <TitleSecundary text="LOGIN" color={colors.primary}  size='2rem'/>
+                <FormLogin >
                     <InputText
                         placeholder="E-mail"
                         value={email}
@@ -95,13 +94,13 @@ export default function Home() {
                         onChange={handleChangePass}
                     />
                     {isLoading ? <Loading /> : <Button type="submit" text="ENTRAR" textColor="#FFF" bgColor={colors.primary} onClick={handleSubmit} />}
-                    
+                    <ContainerText>
+                    <TextPrimary text="Ainda não possui uma conta? " color={colors.text_primary}  />
+                    <Links text="Cadastre-se " color={colors.primary} onClick={() => navigate("/register")} />
+                </ContainerText>
                 </FormLogin>
 
-                <ContainerText>
-                    <TextPrimary text="Ainda não possui uma conta? " color={colors.text_primary} size="18px" />
-                    <Links text="Cadastre-se " color={colors.primary} size="18px" onClick={() => navigate("/register")} />
-                </ContainerText>
+                
             </SectionRight>
         </ContainerPage>
     );

@@ -11,7 +11,7 @@ export const InputField = styled.input`
     border: 1px solid #ccc;
     outline: none;
     @media screen and (max-width: 768px) {
-        font-size: 4vw;
-        height: 3rem;
+        font-size: 0.8rem;
+        width: 72vw;
     }
 `;

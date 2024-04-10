@@ -14,14 +14,17 @@ export const ContainerPage = styled.main`
 export const ContainerForm = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 1rem;
     background-color: #FFF;
-    width: 40vw;
-    height: 80vh;
+    width: 50vw;
+    min-height: 80vh;
     box-shadow: 2px 2px 5px 0px #0000004c;
     padding: 2rem;
     @media screen and (max-width: 768px) {
+        height: 75vh;
         width: 80vw;
+        align-items: center;
     }
 `;
 
@@ -32,10 +35,15 @@ export const ContainerText = styled.div`
     justify-content: end;
     @media screen and (max-width: 768px) {
         flex-direction: column;
+        gap: 0;
     }
 `;
 export const FormRegister = styled.form`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    @media screen and (max-width: 768px) {
+        width: 80vw;
+        align-items: center;
+    }
 `;

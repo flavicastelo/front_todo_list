@@ -1,14 +1,20 @@
 import React from "react";
 import { ButtonIconStyled, ContainerButton, Icon } from "./styles";
 
-export default function ButtonIcon({ text, color, size, onClick }) {
+export default function ButtonIcon({ text, color, size, onClick, isMobile }) {
     return (
-        <ContainerButton color={color}>
-            <ButtonIconStyled  size={size} onClick={onClick}>
-                {text}
-            </ButtonIconStyled>
-            <Icon size={size}/>
-        </ContainerButton>
+        isMobile ? (
+            <ContainerButton color={color} >
+                <Icon size={size} />
+            </ContainerButton>
+        ) : (
+            <ContainerButton color={color}>
+                <ButtonIconStyled size={size} onClick={onClick}>
+                    {text}
+                </ButtonIconStyled>
+                <Icon size={size} />
+            </ContainerButton>
+        )
 
     );
 

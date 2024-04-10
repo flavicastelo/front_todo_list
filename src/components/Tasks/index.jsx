@@ -114,7 +114,7 @@ export default function Tasks() {
             <ContainerPage>
                
                 <ContainerForm onSubmit={addTask}>
-                    <InputText placeholder="Adicionar tarefa" size="57vw" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    <InputText placeholder="Adicionar tarefa" size="57vw" value={description} onChange={(e) => setDescription(e.target.value)} maxLength={24} />
                     <AddButton onClick={() => { }}>
                         <Icon />
                     </AddButton>
@@ -134,6 +134,7 @@ export default function Tasks() {
                                     onClickDelete={() => deleteTask(userId, parseInt(task.task_id))}
                                     text={task.description}
                                     onClickCancel={() => onClickCancel(task.task_id)} 
+                                    value={task.description}
                                     inputValue={editableTasks[task.task_id] ? newDescriptions[task.task_id] || '' : task.description}
                                     onChange={(e) => {
                                         if (editableTasks[task.task_id]) {

@@ -27,14 +27,16 @@ export const SectionLeft = styled.section`
 export const SectionRight = styled.section`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 1rem;
     background-color: #FFF;
     width: 50%;
-    padding: 4em 4rem;
+    padding: 4rem 4rem;
     @media screen and (max-width: 768px) {
         height: 75vh;
         width: 100vw;
-        justify-content: space-between;
+        align-items: center;
+        padding: 3rem;
     }
 `;
 
@@ -59,4 +61,7 @@ export const FormLogin = styled.form`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    @media screen and (max-width: 768px) {
+        align-items: center;
+    }
 `;

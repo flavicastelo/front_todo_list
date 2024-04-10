@@ -7,9 +7,9 @@ export const ContainerTitle= styled.section`
 `;
 export const TitleStyled = styled.h1`
     color:  ${props => props.color || colors.primary};
-    font-size: ${props => props.size || '96px'};
+    font-size: ${props => props.size || '4rem'};
     @media screen and (max-width: 768px) {
-        font-size: 12vw;
+        font-size: ${props => props.size || '3rem'};
     }
 `;
 

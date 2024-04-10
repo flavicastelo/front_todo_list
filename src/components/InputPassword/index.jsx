@@ -18,8 +18,8 @@ export default function InputPassword({ placeholder }) {
                 type={showPassword ? "text" : "password"}
                 placeholder={placeholder}
             />
-            <ToggleButton onClick={toggleShowPassword}>
-            {showPassword ? <FaEyeSlash color={colors.text_primary} size={isMobile ? 24 : 18} /> : <FaEye color={colors.text_primary} size={isMobile ? 24 : 18} />}
+            <ToggleButton type= "button" onClick={toggleShowPassword}>
+            {showPassword ? <FaEyeSlash color={colors.text_primary} size={isMobile ? 24 : 18} /> : <FaEye color={colors.text_primary} size={isMobile ? 22 : 18} />}
 
             </ToggleButton>
         </InputContainer>
