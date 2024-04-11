@@ -15,15 +15,15 @@ export const AlertContainer = styled.div`
   z-index: 9999;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   @media screen and (max-width: 768px) {
-        width: 60vw;
+        width: 70vw;
 }
 `;
 
 export const Message = styled.p`
-  margin-bottom: 10px;
+
 `;
 
 export const Button = styled.button`

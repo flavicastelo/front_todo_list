@@ -7,10 +7,11 @@ export const ButtonStyled = styled.button`
     border: none;
     cursor: pointer;
     width: 100%;
-    height: 2.5rem;
+    height: ${props => props.size || "2.5rem"};
     font-weight: bold;
     font-size: 1rem;
     @media screen and (max-width: 768px) {
         width: 72vw;
+        height: ${props => props.size || "2rem"};
     }
 `;

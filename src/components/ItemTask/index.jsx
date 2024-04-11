@@ -3,12 +3,7 @@ import { AddButton, Checkbox, ContainerIcons, ContainerItem, ContainerPrincipal,
 import { colors } from "../../utils/colors";
 import InputTask from "../InputTask";
 
-export default function ItemTask({ onClickEdit, editable, onClickDelete, text, value, onClickSubmit, onClickCancel, inputValue, onChange }) {
-    const [checked, setChecked] = useState(false);
-
-    const toggleChecked = () => {
-        setChecked(!checked);
-    };
+export default function ItemTask({ onClickEdit, editable, onClickDelete, text, value, onClickSubmit, onClickCancel, inputValue, onChange, toggleChecked, checked = false }) {
 
     return (
         <ContainerPrincipal>

@@ -35,8 +35,7 @@ export const ContainerText = styled.div`
     width: auto;
     justify-content: end;
     @media screen and (max-width: 768px) {
-        flex-direction: column;
-        gap: 0;
+       align-self: center;
     }
 `;
 export const FormRegister = styled.form`
@@ -51,4 +50,16 @@ export const FormRegister = styled.form`
 
 export const PassRegex = styled.span`
     align-self: flex-start;
+`;
+
+export const ContainerFooter = styled.footer`
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: start;
+        width: 100%;
+        gap: 1rem;
+    }
 `;

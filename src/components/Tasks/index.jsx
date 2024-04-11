@@ -16,14 +16,16 @@ export default function Tasks() {
     const navigate = useNavigate();
     const [tasks, setTasks] = useState([]);
     const [error, setError] = useState('');
-    const [editableTasks, setEditableTasks] = useState({}); 
-    const [newDescriptions, setNewDescriptions] = useState({}); 
+    const [editableTasks, setEditableTasks] = useState({});
+    const [newDescriptions, setNewDescriptions] = useState({});
     const [description, setDescription] = useState('');
     const idStorage = localStorage.getItem('user_id');
     const userId = parseInt(idStorage);
     const token = localStorage.getItem('token');
     const [isLoading, setIsLoading] = useState(true);
+    const [checked, setChecked] = useState({});
 
+   
     const getTasks = async () => {
         try {
             const response = await api.get("/task/listtasks", `Bearer ${token}`);
@@ -51,32 +53,48 @@ export default function Tasks() {
         }
         try {
             const response = await api.post("/task/createtasks", data, `Bearer ${token}`);
+            const newTaskId = response.data.task_id;
+            const existingCheckedTask = checkedTasks.find((task) => task.task_id === newTaskId);
+            // setChecked(existingCheckedTask ? true : false);
             setDescription('');
-            getTasks();
+            setTasks('');
+            // getTasks();
+            // setChecked({});
         } catch (error) {
             setError(error.response.data.error);
         }
     }
-
+    useEffect(() => {
+        const initialCheckedItems = localStorage.getItem('checkedTasks') ? JSON.parse(localStorage.getItem('checkedTasks')) : {};
+        setChecked(initialCheckedItems);
+      }, []);
+      useEffect(() => {
+        localStorage.setItem('checkedTasks', JSON.stringify(checked));
+      }, [checked]);
     const toggleEditable = (taskId) => {
         setEditableTasks({
             ...editableTasks,
-            [taskId]: !editableTasks[taskId] 
+            [taskId]: !editableTasks[taskId]
         });
     };
-
+    const toggleChecked = (taskId) => {
+        setChecked({
+            ...checked, 
+            [taskId]: !checked[taskId]
+        });
+        localStorage.setItem('checkedTasks', JSON.stringify(checked));
+    };
     const editTask = async (userId, taskId, newDescription) => {
         const data = {
-            newDescription: newDescription 
+            newDescription: newDescription
         }
         try {
             const response = await api.put(`/task/edittask/${userId}/${taskId}`, data, `Bearer ${token}`);
-            delete newDescriptions[taskId]; 
+            delete newDescriptions[taskId];
             setEditableTasks({
                 ...editableTasks,
-                [taskId]: false 
+                [taskId]: false
             });
-            window.location.reload();
             getTasks();
         } catch (error) {
             setError(error.response.data.error);
@@ -100,21 +118,22 @@ export default function Tasks() {
     const handleChange = (taskId, value) => {
         setNewDescriptions({
             ...newDescriptions,
-            [taskId]: value 
+            [taskId]: value
         });
     }
     const onClickCancel = (task) => {
         toggleEditable(task);
         window.location.reload();
     }
-
+     
+    
     return (
         <>
             <Header />
             <ContainerPage>
-               
+
                 <ContainerForm onSubmit={addTask}>
-                    <InputText placeholder="Adicionar tarefa" size="57vw" value={description} onChange={(e) => setDescription(e.target.value)} maxLength={24} />
+                    <InputText placeholder="Adicionar tarefa" width="57vw" value={description} onChange={(e) => setDescription(e.target.value)} maxLength={24} />
                     <AddButton onClick={() => { }}>
                         <Icon />
                     </AddButton>
@@ -129,11 +148,12 @@ export default function Tasks() {
                             tasks.map((task) => (
                                 <ItemTask
                                     key={task.task_id}
-                                    onClickEdit={() => toggleEditable(task.task_id)} 
-                                    editable={editableTasks[task.task_id] || false} 
+                                    task={task}
+                                    onClickEdit={() => toggleEditable(task.task_id)}
+                                    editable={editableTasks[task.task_id] || false}
                                     onClickDelete={() => deleteTask(userId, parseInt(task.task_id))}
                                     text={task.description}
-                                    onClickCancel={() => onClickCancel(task.task_id)} 
+                                    onClickCancel={() => onClickCancel(task.task_id)}
                                     value={task.description}
                                     inputValue={editableTasks[task.task_id] ? newDescriptions[task.task_id] || '' : task.description}
                                     onChange={(e) => {
@@ -141,7 +161,9 @@ export default function Tasks() {
                                             handleChange(task.task_id, e.target.value);
                                         }
                                     }}
-                                    onClickSubmit={() => editTask(userId, parseInt(task.task_id), newDescriptions[task.task_id] )}
+                                    onClickSubmit={() => editTask(userId, parseInt(task.task_id), newDescriptions[task.task_id])}
+                                    toggleChecked={()=> toggleChecked(task.task_id)}
+                                    checked={checked[task.task_id] || false}
                                 />
                             ))
                         )
