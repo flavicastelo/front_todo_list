@@ -51,18 +51,17 @@ export default function Tasks() {
             userId: userId,
             description: description
         }
-        try {
-            const response = await api.post("/task/createtasks", data, `Bearer ${token}`);
-            const newTaskId = response.data.task_id;
-            const existingCheckedTask = checkedTasks.find((task) => task.task_id === newTaskId);
-            // setChecked(existingCheckedTask ? true : false);
-            setDescription('');
-            setTasks('');
-            // getTasks();
-            // setChecked({});
-        } catch (error) {
-            setError(error.response.data.error);
-        }
+        if (description.trim()) {
+            try {
+              const response = await api.post("/task/createtasks", data, `Bearer ${token}`);
+              const newTaskId = response.data.task_id;
+              const existingCheckedTask = checkedTasks.find((task) => task.task_id === newTaskId);
+              setDescription(''); // Limpa o campo de descrição
+              setTasks(''); // Atualiza a lista de tarefas (opcional)
+            } catch (error) {
+              setError(error.response.data.error);
+            }
+          }
     }
     useEffect(() => {
         const initialCheckedItems = localStorage.getItem('checkedTasks') ? JSON.parse(localStorage.getItem('checkedTasks')) : {};
