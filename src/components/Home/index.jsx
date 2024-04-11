@@ -102,7 +102,7 @@ export default function Home() {
                         onChange={handleChangePass}
                     />
                     {erroMsg && <TextPrimary size='0.6rem' text={erroMsg} align='left' color='red' />}
-                    {isLoading ? <Loading /> : <Button type="submit" text="ENTRAR" textColor="#FFF" bgColor={colors.primary} disabled={!email || !password} onClick={handleSubmit} />}
+                    {isLoading ? <Loading /> : <Button type="submit" text="ENTRAR" textColor={colors.dark_mode} bgColor={colors.primary} disabled={!email || !password} onClick={handleSubmit} />}
                     <ContainerText>
                         <TextPrimary text="Ainda não possui uma conta? " color={colors.text_primary} />
                         <Links text="Cadastre-se " color={colors.primary} onClick={() => navigate("/register")} />

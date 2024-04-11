@@ -5,10 +5,12 @@ import { FiPlus } from "react-icons/fi";
 export const ContainerPage = styled.main`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     padding-top: 4rem;
     gap: 1rem;
+    height: 100vh;
+    background-color: #494848;
 `;
 
 export const ContainerForm = styled.form`
@@ -49,7 +51,7 @@ export const Icon = styled(FiPlus)`
     font-size: ${props => props.size || '24px'};
 `;
 export const ContainerTasks = styled.section`
-    background-color: ${colors.color_transparent};
+    background-color: ${colors.dark_mode};
     width: 60vw;
     min-height: 40vh;
     padding: 2rem;

@@ -16,7 +16,7 @@ export const ContainerForm = styled.section`
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    background-color: #FFF;
+    background-color:  ${colors.dark_mode};;
     width: 50vw;
     min-height: 90vh;
     box-shadow: 2px 2px 5px 0px #0000004c;

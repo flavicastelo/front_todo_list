@@ -126,7 +126,7 @@ export default function Register() {
                         onChange={(e) => { setConfirmPass(e.target.value) }}
                     />
                     {erroMsg && <TextPrimary size='0.6rem' text={erroMsg} align='left' color='red' />}
-                    {isLoading ? <Loading /> : <Button  text="ENVIAR" textColor="#FFF" bgColor={colors.primary} disabled={!name || !email || !password || !confirmPass} onClick={handleSubmit} />}
+                    {isLoading ? <Loading /> : <Button  text="ENVIAR" textColor={colors.dark_mode} bgColor={colors.primary} disabled={!name || !email || !password || !confirmPass} onClick={handleSubmit} />}
 
                     {showAlert && (
                         <Alert message={successMsg} onClick={handleCloseAlert} />

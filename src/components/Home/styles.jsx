@@ -29,7 +29,7 @@ export const SectionRight = styled.section`
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    background-color: ${colors.light_mode};
+    background-color: ${colors.dark_mode};
     width: 50%;
     padding: 4rem 4rem;
     @media screen and (max-width: 768px) {

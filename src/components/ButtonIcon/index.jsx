@@ -8,8 +8,8 @@ export default function ButtonIcon({ text, color, size, onClick, isMobile }) {
                 <Icon size={size} />
             </ContainerButton>
         ) : (
-            <ContainerButton color={color}>
-                <ButtonIconStyled size={size} onClick={onClick}>
+            <ContainerButton onClick={onClick} color={color}>
+                <ButtonIconStyled size={size} >
                     {text}
                 </ButtonIconStyled>
                 <Icon size={size} />

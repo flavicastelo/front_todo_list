@@ -6,7 +6,7 @@ export const AlertContainer = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #fff;
+  background-color: ${colors.dark_mode};
   padding: 2rem;
   border: 1px solid #ccc;
   width: 40vw;
@@ -29,7 +29,7 @@ export const Message = styled.p`
 export const Button = styled.button`
   background-color: ${colors.primary};
   width: 20%;
-  color: #FFF;
+  color:  ${colors.dark_mode};;
   padding: 8px 16px;
   border: none;
   border-radius: 4px;

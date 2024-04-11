@@ -131,7 +131,6 @@ export default function Tasks() {
         <>
             <Header />
             <ContainerPage>
-
                 <ContainerForm onSubmit={addTask}>
                     <InputText placeholder="Adicionar tarefa" width="57vw" value={description} onChange={(e) => setDescription(e.target.value)} maxLength={24} />
                     <AddButton onClick={() => { }}>
